@@ -1,0 +1,81 @@
+/* body {
+    background-color: black;
+} */
+
+.field {
+    width: 60%;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    margin-top: 2%;
+}
+
+.factory {
+    width: 120%;
+}
+
+.wings {
+    position: absolute;
+    content: "";
+    top: 8%;
+    left: 39%;
+    width: 20%;
+    animation-name: move-wings;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    transform-origin: center;
+}
+
+@keyframes move-wings {
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+
+.trolleys-packed {
+    animation: shake-trolley 0.3s linear infinite;
+}
+
+.trolley-packed {
+    animation: move-trolley 5s linear infinite;
+}
+
+@keyframes move-trolley {
+    100% {
+        transform: translateX(475px);
+    }
+}
+
+.trolleys-full {
+    position: absolute;
+    width: 63%;
+    bottom: 1.5%;
+    left: -11.3%;
+    z-index: -1;
+    animation: shake-trolley 0.3s linear infinite;
+}
+
+.trolley-full {
+    animation: move-trolley-full 5s linear infinite;
+}
+
+@keyframes move-trolley-full {
+    100% {
+        transform: translateX(417px);
+    }
+}
+
+@keyframes shake-trolley {
+    30% {
+        transform: translateY(0px);
+    }
+
+    60% {
+        transform: translateY(1px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}

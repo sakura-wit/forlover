@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>
+        happy birth day
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#000000">
+    <link rel="shortcut icon" type="image/png" href="./favicon.png">
+    <link rel="icon" type="image/png" href="./favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="./favicon.png">
+    <meta name="msapplication-TileColor" content="#000000">
+    <meta name="msapplication-TileImage" content="./favicon.png">
+    <link href="./css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/reset.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/app.css">
+
+</head>
+
+<body style="overflow: scroll;">
+
+    <div style="width: 100%; height: 400px;">
+
+        <!-- SVG Spritesheet -->
+        <div style="height: 0; width: 0; position: absolute; visibility: hidden;">
+            <svg xmlns="http://www.w3.org/2000/svg">
+                <symbol id="icon-play" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z" />
+                </symbol>
+                <symbol id="icon-pause" viewBox="0 0 24 24">
+                    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+                </symbol>
+                <symbol id="icon-close" viewBox="0 0 24 24">
+                    <path
+                        d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+                </symbol>
+                <symbol id="icon-settings" viewBox="0 0 24 24">
+                    <path
+                        d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z" />
+                </symbol>
+                <symbol id="icon-sound-on" viewBox="0 0 24 24">
+                    <path
+                        d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z" />
+                </symbol>
+                <symbol id="icon-sound-off" viewBox="0 0 24 24">
+                    <path
+                        d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z" />
+                </symbol>
+            </svg>
+        </div>
+        <!-- App -->
+        <div class="container">
+            <div class="loading-init">
+                <div class="loading-init__header">
+                </div>
+                <div class="loading-init__status">
+                </div>
+            </div>
+            <div class="stage-container remove">
+                <div class="canvas-container">
+                    <canvas id="trails-canvas">
+                    </canvas>
+                    <canvas id="main-canvas">
+                    </canvas>
+                </div>
+                <div class="controls">
+                    <div class="btn pause-btn">
+                        <svg fill="white" width="24" height="24">
+                            <use href="#icon-pause" xlink:href="#icon-pause">
+                            </use>
+                        </svg>
+                    </div>
+                    <div class="btn sound-btn">
+                        <svg fill="white" width="24" height="24">
+                            <use href="#icon-sound-off" xlink:href="#icon-sound-off">
+                            </use>
+                        </svg>
+                    </div>
+                    <div class="btn settings-btn">
+                        <svg fill="white" width="24" height="24">
+                            <use href="#icon-settings" xlink:href="#icon-settings">
+                            </use>
+                        </svg>
+                    </div>
+                </div>
+                <div class="menu hide">
+                    <div class="menu__inner-wrap">
+                        <div class="btn btn--bright close-menu-btn">
+                            <svg fill="white" width="24" height="24">
+                                <use href="#icon-close" xlink:href="#icon-close">
+                                </use>
+                            </svg>
+                        </div>
+
+
+                        <form>
+                            <div class="form-option form-option--select">
+                                <label class="shell-type-label">
+                                </label>
+                                <select class="shell-type">
+                                </select>
+                            </div>
+                            <div class="form-option form-option--select">
+                                <label class="shell-size-label">
+                                </label>
+                                <select class="shell-size">
+                                </select>
+                            </div>
+                            <div class="form-option form-option--select">
+                                <label class="quality-ui-label">
+                                </label>
+                                <select class="quality-ui">
+                                </select>
+                            </div>
+                            <div class="form-option form-option--select">
+                                <label class="sky-lighting-label">
+                                </label>
+                                <select class="sky-lighting">
+                                </select>
+                            </div>
+                            <div class="form-option form-option--select">
+                                <label class="scaleFactor-label">
+                                </label>
+                                <select class="scaleFactor">
+                                </select>
+                            </div>
+                            <div class="form-option form-option--checkbox">
+                                <label class="auto-launch-label">
+                                </label>
+                                <input class="auto-launch" type="checkbox" />
+                            </div>
+                            <div class="form-option form-option--checkbox form-option--finale-mode">
+                                <label class="finale-mode-label">
+                                </label>
+                                <input class="finale-mode" type="checkbox" />
+                            </div>
+                            <div class="form-option form-option--checkbox">
+                                <label class="hide-controls-label">
+                                </label>
+                                <input class="hide-controls" type="checkbox" />
+                            </div>
+                            <div class="form-option form-option--checkbox form-option--fullscreen">
+                                <label class="fullscreen-label">
+                                </label>
+                                <input class="fullscreen" type="checkbox" />
+                            </div>
+                            <div class="form-option form-option--checkbox">
+                                <label class="long-exposure-label">
+                                </label>
+                                <input class="long-exposure" type="checkbox" />
+                            </div>
+                            <div class="resetBtn">
+                            </div>
+                        </form>
+                        <!-- <div class="credits">
+						<p class="copyright">
+							<a href="/v1" target="_blank">访问旧版</a>
+							<br>
+							承接建站服务：QQ1209278955
+							<br>
+							<script>
+								var mydate = new Date();
+								document.writeln("COPYRIGHT&nbsp;&copy;&nbsp;2021 - " + mydate.getFullYear() + '&nbsp;<a target="_blank" href="https://www.w3h5.com/">前端资源网</a><br />ALL&nbsp;RIGHTS&nbsp;RESERVED');
+							</script>
+							<br>
+							希望你所有的不幸 都可以在本站的声声鞭炮中结束
+							<br>
+							<script>
+								var _hmt = _hmt || [];
+								(function () {
+									var hm = document.createElement("script");
+									hm.src = "https://hm.baidu.com/hm.js?5c90a122456b3755be6ca04c32948fae";
+									var s = document.getElementsByTagName("script")[0];
+									s.parentNode.insertBefore(hm, s);
+								})();
+							</script>
+
+						</p>
+					</div> -->
+                    </div>
+                </div>
+            </div>
+            <div class="help-modal">
+                <div class="help-modal__overlay">
+                </div>
+                <div class="help-modal__dialog">
+                    <div class="help-modal__header">
+                    </div>
+                    <div class="help-modal__body">
+                    </div>
+                    <button type="button" class="help-modal__close-btn">
+                        关闭
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div style="z-index: 100; margin-top: -100px;" class="field">
+        <svg class="factory" xmlns="http://www.w3.org/2000/svg" viewBox="340 0 2698.82 925.31">
+            <g class="conveyer">
+                <g>
+                    <path class="conveyer-line" d="M377.71,1070.76l2379.51,1.59" transform="translate(-90.46 -176.45)"
+                        style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                    <path d="M2726.4,1100.76H332.5l86.82-57.57,2367.38,2.55Z" transform="translate(-90.46 -176.45)"
+                        style="fill: none;stroke: #fff;stroke-miterlimit: 26;stroke-width: 3px" />
+                </g>
+            </g>
+            <g class="mill-back">
+                <path d="M1756.87,1044.66H1361.36q8.69-109.79,17.38-219.56l380.86-.06Z"
+                    transform="translate(-90.46 -176.45)"
+                    style="fill: #ff1ead;stroke: #ff1ead;stroke-miterlimit: 10;stroke-width: 2.2160138599414014px" />
+                <path d="M1326.44,1044.26q-2.13,28.11-4.24,56.23l395.66,1,39.87-55.82Z"
+                    transform="translate(-90.46 -176.45)" style="fill: #ff1ead" />
+            </g>
+            <g class="trolleys-packed">
+                <g class="trolley trolley-packed">
+                    <g>
+                        <circle cx="1414.6" cy="862.4" r="19.62"
+                            style="stroke: #fff;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <circle cx="1575.79" cy="862.7" r="19.62"
+                            style="stroke: #fff;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <polygon points="1334.07 864.73 1334.07 878.89 1379.12 847.99 1379.12 832.24 1334.07 864.73"
+                            style="fill: #ff1ead" />
+                        <rect x="1378.4" y="832.63" width="229.18" height="16.1"
+                            style="fill: #ff1ead;stroke: #000;stroke-miterlimit: 26" />
+                        <path d="M1697.66,1009.13l-43.53,31.79v15.52l43.11-32.25Z" transform="translate(-90.46 -176.45)"
+                            style="fill: #ff1ead;stroke: #000;stroke-miterlimit: 26" />
+                        <polygon points="1333.27 865.54 1333.27 879.7 1564.22 879.7 1564.22 864.17 1333.27 865.54"
+                            style="fill: #ff1ead;stroke: #000;stroke-miterlimit: 26" />
+                        <circle cx="1372.86" cy="894.1" r="19.62"
+                            style="stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px;fill:none" />
+                        <circle cx="1534.01" cy="893.9" r="19.62"
+                            style="stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px;fill:none" />
+                    </g>
+                    <g>
+                        <g>
+                            <rect x="1298.55" y="729.86" width="277.14" height="137.67"
+                                style="stroke: #fff;stroke-miterlimit: 26;stroke-width: 3px" />
+                            <path d="M1666.14,906.32l-278.14-1,60.81-32.14,279,.18Z"
+                                transform="translate(-90.46 -176.45)" style="fill: #fff" />
+                            <path d="M1666.68,1044.12l59.56-30.49q.27-70.14.55-140.27"
+                                transform="translate(-90.46 -176.45)"
+                                style="stroke: #fff;stroke-miterlimit: 26;stroke-width: 3px" />
+                            <path d="M1667.15,1042.65l58.06-29.91q.3-69.15.58-138.29l-58.52,31.39Z"
+                                transform="translate(-90.46 -176.45)" />
+                            <path d="M1450,1045l0-137.62,56-34.54,46.34.12-51.89,34.46q-.24,68.81-.5,137.61Z"
+                                transform="translate(-90.46 -176.45)" style="fill: #ff1ead" />
+                            <path d="M1557.31,1045l0-137.62,56-34.54,50.91.31-56.45,34.27q-.26,68.8-.5,137.61Z"
+                                transform="translate(-90.46 -176.45)" style="fill: #ff1ead" />
+                            <path d="M1688,1034.71l-1.23-139.25-279.24-1.08,28.75-14.74L1714,881l.13,140.43Z"
+                                transform="translate(-90.46 -176.45)" style="fill: #ff1ead" />
+                        </g>
+                    </g>
+                </g>
+            </g>
+            <g class="trolleys-packed">
+                <g class="trolley trolley-packed">
+                    <g>
+                        <circle cx="1890.6" cy="862.4" r="19.62"
+                            style="stroke: #fff;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <circle cx="2051.79" cy="862.7" r="19.62"
+                            style="stroke: #fff;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <polygon points="1810.07 864.73 1810.07 878.89 1855.12 847.99 1855.12 832.24 1810.07 864.73"
+                            style="fill: #ff1ead" />
+                        <rect x="1854.4" y="832.63" width="229.18" height="16.1"
+                            style="fill: #ff1ead;stroke: #000;stroke-miterlimit: 26" />
+                        <path d="M2173.66,1009.13l-43.53,31.79v15.52l43.11-32.25Z" transform="translate(-90.46 -176.45)"
+                            style="fill: #ff1ead;stroke: #000;stroke-miterlimit: 26" />
+                        <polygon points="1809.27 865.54 1809.27 879.7 2040.22 879.7 2040.22 864.17 1809.27 865.54"
+                            style="fill: #ff1ead;stroke: #000;stroke-miterlimit: 26" />
+                        <circle cx="1848.86" cy="894.1" r="19.62"
+                            style="stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px;fill:none" />
+                        <circle cx="2010.01" cy="893.9" r="19.62"
+                            style="stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px;fill:none" />
+                    </g>
+                    <g>
+                        <rect x="1773.58" y="728.39" width="277.14" height="137.67"
+                            style="stroke: #fff;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <path d="M2141.17,904.85l-278.14-1,60.81-32.14,279,.18Z" transform="translate(-90.46 -176.45)"
+                            style="fill: #fff" />
+                        <path d="M2141.71,1042.65l59.56-30.49q.27-70.14.55-140.27" transform="translate(-90.46 -176.45)"
+                            style="stroke: #fff;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <path d="M2142.18,1041.18l58.06-29.92q.28-69.13.58-138.28l-58.52,31.39Z"
+                            transform="translate(-90.46 -176.45)" />
+                        <path d="M1925.06,1043.56l0-137.62,56-34.54,46.35.12L1975.49,906q-.26,68.81-.5,137.61Z"
+                            transform="translate(-90.46 -176.45)" style="fill: #ff1ead" />
+                        <path d="M2032.33,1043.53l0-137.62,56-34.54,50.91.31L2082.76,906q-.24,68.81-.5,137.61Z"
+                            transform="translate(-90.46 -176.45)" style="fill: #ff1ead" />
+                        <path d="M2163,1033.24,2161.79,894l-279.24-1.08,28.75-14.75L2189,879.52l.13,140.43Z"
+                            transform="translate(-90.46 -176.45)" style="fill: #ff1ead" />
+                    </g>
+                </g>
+            </g>
+            <g class="trolleys-packed">
+                <g class="trolley trolley-packed">
+                    <g>
+                        <circle cx="2362.6" cy="862.4" r="19.62"
+                            style="stroke: #fff;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <circle cx="2523.79" cy="862.7" r="19.62"
+                            style="stroke: #fff;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <polygon points="2282.07 864.73 2282.07 878.89 2327.12 847.99 2327.12 832.24 2282.07 864.73"
+                            style="fill: #ff1ead" />
+                        <rect x="2326.4" y="832.63" width="229.18" height="16.1"
+                            style="fill: #ff1ead;stroke: #000;stroke-miterlimit: 26" />
+                        <path d="M2645.66,1009.13l-43.53,31.79v15.52l43.11-32.25Z" transform="translate(-90.46 -176.45)"
+                            style="fill: #ff1ead;stroke: #000;stroke-miterlimit: 26" />
+                        <polygon points="2281.27 865.54 2281.27 879.7 2512.22 879.7 2512.22 864.17 2281.27 865.54"
+                            style="fill: #ff1ead;stroke: #000;stroke-miterlimit: 26" />
+                        <circle cx="2320.86" cy="894.1" r="19.62"
+                            style="stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px;fill:none" />
+                        <circle cx="2482.01" cy="893.9" r="19.62"
+                            style="stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px;fill:none" />
+                    </g>
+                    <g>
+                        <rect x="2246.58" y="728.39" width="277.14" height="137.67"
+                            style="stroke: #fff;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <path d="M2614.17,904.85l-278.14-1,60.81-32.14,279,.18Z" transform="translate(-90.46 -176.45)"
+                            style="fill: #fff" />
+                        <path d="M2614.71,1042.65l59.56-30.49q.27-70.14.55-140.27" transform="translate(-90.46 -176.45)"
+                            style="stroke: #fff;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <path d="M2615.18,1041.18l58.06-29.92q.28-69.13.58-138.28l-58.52,31.39Z"
+                            transform="translate(-90.46 -176.45)" />
+                        <path d="M2398.06,1043.56l0-137.62,56-34.54,46.35.12L2448.49,906q-.25,68.81-.5,137.61Z"
+                            transform="translate(-90.46 -176.45)" style="fill: #ff1ead" />
+                        <path d="M2505.33,1043.53l0-137.62,56-34.54,50.91.31L2555.76,906q-.24,68.81-.5,137.61Z"
+                            transform="translate(-90.46 -176.45)" style="fill: #ff1ead" />
+                        <path d="M2636,1033.24,2634.79,894l-279.24-1.08,28.75-14.75L2662,879.52l.13,140.43Z"
+                            transform="translate(-90.46 -176.45)" style="fill: #ff1ead" />
+                    </g>
+                </g>
+                <g>
+                    <g>
+                        <path d="M1716.65,1100.62H1321.14q8.7-109.77,17.39-219.56l380.85-.06Z"
+                            transform="translate(-90.46 -176.45)"
+                            style="stroke: #ff1ead;stroke-miterlimit: 10;stroke-width: 2.2160138599414014px" />
+                    </g>
+                    <g>
+                        <path
+                            d="M1455.57,428.9a2029.67,2029.67,0,0,1-59.34,210.72,2030.43,2030.43,0,0,1-99.94,241.21h540.19c-33-70.22-65.88-148.27-96.59-233.9-27.53-76.72-49.79-149.78-67.89-218Z"
+                            transform="translate(-90.46 -176.45)"
+                            style="stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <path d="M1503.45,431.43,1388.22,881.21" transform="translate(-90.46 -176.45)"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <path d="M1590.53,432.69l53.25,448.44" transform="translate(-90.46 -176.45)"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <path
+                            d="M1589.9,431.84q26.74,225.17,53.48,450.35l193.45-1c-23.37-50-46.39-103.17-68.5-159.49a2748.25,2748.25,0,0,1-96.25-292.53Z"
+                            transform="translate(-90.46 -176.45)"
+                            style="fill: #ff1ead;stroke: #000;stroke-miterlimit: 26;stroke-width: 3px" />
+                    </g>
+                    <g>
+                        <path
+                            d="M1441.39,428.43l123.06-122.95,123.36,123c-28.89,1.5-53.34,2.3-71.79,2.75-29.59.73-66.37,1.58-113.85.11C1477.06,430.62,1456.16,429.41,1441.39,428.43Z"
+                            transform="translate(-90.46 -176.45)"
+                            style="stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 2.2615068643385px" />
+                        <path d="M1564.48,306.6l-61,124.83q27.12.88,55.74.83,15.74-.06,31-.41"
+                            transform="translate(-90.46 -176.45)"
+                            style="stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 2.2615068643385px" />
+                        <path d="M1565.66,305q12.13,63.69,24.28,127.39l98.61-3.33Q1627.09,367.06,1565.66,305Z"
+                            transform="translate(-90.46 -176.45)"
+                            style="fill: #ff1ead;stroke: #000;stroke-miterlimit: 26;stroke-width: 3px" />
+                    </g>
+                </g>
+            </g>
+        </svg>
+        <svg class="wings" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 598.18 598.58">
+            <circle cx="295.59" cy="300.29" r="46.1" style="stroke: #fff;stroke-miterlimit: 26;stroke-width: 5px" />
+            <g>
+                <line x1="62.99" y1="592.89" x2="529.69" y2="5.79"
+                    style="fill: none;stroke: #fff;stroke-miterlimit: 26;stroke-width: 3px" />
+                <line x1="399.49" y1="156.89" x2="522.29" y2="2.49"
+                    style="fill: none;stroke: #fff;stroke-miterlimit: 26;stroke-width: 8px" />
+                <line x1="70.19" y1="596.09" x2="192.99" y2="441.59"
+                    style="fill: none;stroke: #fff;stroke-miterlimit: 26;stroke-width: 8px" />
+                <rect x="386.33" y="79.17" width="197.89" height="37.5"
+                    transform="translate(105.29 415.24) rotate(-51.27)" style="fill: #ff1ead" />
+                <rect x="7.37" y="480.72" width="197.89" height="37.5"
+                    transform="translate(-349.85 269.94) rotate(-51.27)" style="fill: #ff1ead" />
+            </g>
+            <g>
+                <line x1="2.49" y1="76.49" x2="156.89" y2="199.29"
+                    style="fill: none;stroke: #fff;stroke-miterlimit: 26;stroke-width: 8px" />
+                <line x1="441.29" y1="406.29" x2="595.69" y2="529.09"
+                    style="fill: none;stroke: #fff;stroke-miterlimit: 26;stroke-width: 8px" />
+                <line x1="5.39" y1="69.59" x2="592.49" y2="536.29"
+                    style="fill: none;stroke: #fff;stroke-miterlimit: 26;stroke-width: 3px" />
+                <rect x="1.06" y="94.81" width="197.89" height="37.5" transform="translate(92.97 -37.6) rotate(38.7)"
+                    style="fill: #ff1ead" />
+                <rect x="400.78" y="472.92" width="197.89" height="37.5"
+                    transform="translate(417.18 -204.5) rotate(38.7)" style="fill: #ff1ead" />
+            </g>
+            <circle cx="294.69" cy="300.99" r="18.3" style="fill: #ff1ead" />
+        </svg>
+        <div class="trolleys-full">
+
+
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1532.39 247.25">
+
+                <g class="trolley trolley-full">
+                    <circle cx="489.14" cy="194.94" r="19.62"
+                        style="stroke: #fff;stroke-miterlimit: 26;stroke-width: 3px" />
+                    <circle cx="650.33" cy="195.23" r="19.62"
+                        style="stroke: #fff;stroke-miterlimit: 26;stroke-width: 3px" />
+                    <line x1="438.2" y1="194.28" x2="664.39" y2="194.28"
+                        style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                    <g>
+                        <path d="M443.92,129l42-30.49" transform="translate(-28.33 -40.37)"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="416.08" y1="120.28" x2="457.9" y2="90.41"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="416.01" y1="150.59" x2="457.74" y2="120.53"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="415.94" y1="180.67" x2="457.59" y2="150.49"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="415.79" y1="211.15" x2="457.74" y2="180.52"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <path d="M466.08,113.25q.24,61.13.46,122.24" transform="translate(-28.33 -40.37)"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                    </g>
+                    <g>
+                        <rect x="457.95" y="58.27" width="226.46" height="122.47"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="489.78" y1="58.31" x2="489.78" y2="180.4"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="521.91" y1="57.96" x2="521.91" y2="180.04"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="554.12" y1="58.51" x2="554.12" y2="180.6"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="586.25" y1="58.16" x2="586.25" y2="180.25"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="618.63" y1="58.97" x2="618.63" y2="181.05"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="650.76" y1="58.62" x2="650.76" y2="180.7"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="457.49" y1="89.91" x2="684.83" y2="89.91"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="457.84" y1="120.2" x2="685.18" y2="120.2"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="456.97" y1="150.46" x2="684.31" y2="150.46"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <!-- <image x="10" y="10" style="margin-left: 100px; height: 200px; width:200px" xlink:href="../src/anh.jpg" /> -->
+                    </g>
+
+                    <g>
+                        <path d="M671.18,251.79l42-30.48" transform="translate(-28.33 -40.37)"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="642.26" y1="180.72" x2="684.03" y2="150.58"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="642.26" y1="150.7" x2="684.27" y2="119.97"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="642.26" y1="120.21" x2="684.27" y2="90.07"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="642.38" y1="89.36" x2="684.5" y2="58.15"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <path d="M692.75,235.88q0-61.11,0-122.21" transform="translate(-28.33 -40.37)"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+
+                    </g>
+                    <g>
+                        <rect x="415.99" y="88.76" width="226.46" height="122.47"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="447.81" y1="88.8" x2="447.81" y2="210.89"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="479.94" y1="88.45" x2="479.94" y2="210.53"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="512.15" y1="89" x2="512.15" y2="211.09"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="544.28" y1="88.65" x2="544.28" y2="210.74"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="576.66" y1="89.46" x2="576.66" y2="211.54"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="608.79" y1="89.11" x2="608.79" y2="211.19"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="415.52" y1="120.4" x2="642.86" y2="120.4"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="415.88" y1="150.69" x2="643.22" y2="150.69"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="415" y1="180.95" x2="642.34" y2="180.95"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <image x="450" y="0" style="margin-left: 100px; height: 200px; width:200px"
+                            xlink:href="../src/anh.jpg" />
+
+                    </g>
+                    <circle cx="447.4" cy="226.64" r="19.62"
+                        style="stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px;" />
+                    <circle cx="608.55" cy="226.43" r="19.62"
+                        style="stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                    <circle cx="74.14" cy="194.94" r="19.62"
+                        style="stroke: #fff;stroke-miterlimit: 26;stroke-width: 3px" />
+                    <circle cx="235.33" cy="195.23" r="19.62"
+                        style="stroke: #fff;stroke-miterlimit: 26;stroke-width: 3px" />
+                    <line x1="23.2" y1="194.28" x2="249.39" y2="194.28"
+                        style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                    <g>
+                        <path d="M28.92,129l42-30.49" transform="translate(-28.33 -40.37)"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="1.08" y1="120.28" x2="42.9" y2="90.41"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="1.01" y1="150.59" x2="42.74" y2="120.53"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="0.94" y1="180.67" x2="42.59" y2="150.49"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="0.79" y1="211.15" x2="42.74" y2="180.52"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <path d="M51.08,113.25q.24,61.13.46,122.24" transform="translate(-28.33 -40.37)"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                    </g>
+                    <g>
+                        <rect x="42.95" y="58.27" width="226.46" height="122.47"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="74.78" y1="58.31" x2="74.78" y2="180.4"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="106.91" y1="57.96" x2="106.91" y2="180.04"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="139.12" y1="58.51" x2="139.12" y2="180.6"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="171.25" y1="58.16" x2="171.25" y2="180.25"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="203.63" y1="58.97" x2="203.63" y2="181.05"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="235.76" y1="58.62" x2="235.76" y2="180.7"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="42.49" y1="89.91" x2="269.83" y2="89.91"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="42.84" y1="120.2" x2="270.18" y2="120.2"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="41.97" y1="150.46" x2="269.31" y2="150.46"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                    </g>
+
+                    <g>
+                        <path d="M256.18,251.79l42-30.48" transform="translate(-28.33 -40.37)"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="227.26" y1="180.72" x2="269.03" y2="150.58"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="227.26" y1="150.7" x2="269.27" y2="119.97"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="227.26" y1="120.21" x2="269.27" y2="90.07"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="227.38" y1="89.36" x2="269.5" y2="58.15"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <path d="M277.75,235.88q0-61.11,0-122.21" transform="translate(-28.33 -40.37)"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                    </g>
+                    <g>
+                        <rect x="0.99" y="88.76" width="226.46" height="122.47"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="32.81" y1="88.8" x2="32.81" y2="210.89"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="64.94" y1="88.45" x2="64.94" y2="210.53"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="97.15" y1="89" x2="97.15" y2="211.09"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="129.28" y1="88.65" x2="129.28" y2="210.74"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="161.66" y1="89.46" x2="161.66" y2="211.54"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="193.79" y1="89.11" x2="193.79" y2="211.19"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="0.52" y1="120.4" x2="227.86" y2="120.4"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="0.88" y1="150.69" x2="228.22" y2="150.69"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line y1="180.95" x2="227.34" y2="180.95"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                    </g>
+                    <circle cx="32.4" cy="226.64" r="19.62"
+                        style="stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                    <circle cx="193.55" cy="226.43" r="19.62"
+                        style="stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                </g>
+                <g class="trolley trolley-full">
+                    <!-- <image x="450" y="0" style="margin-left: 100px; height: 200px; width:200px" xlink:href="../src/anh.jpg" /> -->
+                    <circle cx="907.14" cy="194.94" r="19.62"
+                        style="stroke: #fff;stroke-miterlimit: 26;stroke-width: 3px" />
+                    <circle cx="1068.33" cy="195.23" r="19.62"
+                        style="stroke: #fff;stroke-miterlimit: 26;stroke-width: 3px" />
+                    <line x1="856.2" y1="194.28" x2="1082.39" y2="194.28"
+                        style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                    <g>
+                        <path d="M861.92,129l42-30.49" transform="translate(-28.33 -40.37)"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="834.08" y1="120.28" x2="875.9" y2="90.41"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="834.01" y1="150.59" x2="875.74" y2="120.53"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="833.94" y1="180.67" x2="875.59" y2="150.49"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="833.79" y1="211.15" x2="875.74" y2="180.52"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <path d="M884.08,113.25q.24,61.13.46,122.24" transform="translate(-28.33 -40.37)"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                    </g>
+                    <g>
+                        <image x="10" y="0" style=" height: 200px; width:200px" xlink:href="../src/anh.jpg" />
+                        <rect x="875.95" y="58.27" width="226.46" height="122.47"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="907.78" y1="58.31" x2="907.78" y2="180.4"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="939.91" y1="57.96" x2="939.91" y2="180.04"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="972.12" y1="58.51" x2="972.12" y2="180.6"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="1004.25" y1="58.16" x2="1004.25" y2="180.25"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="1036.63" y1="58.97" x2="1036.63" y2="181.05"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="1068.76" y1="58.62" x2="1068.76" y2="180.7"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="875.49" y1="89.91" x2="1102.83" y2="89.91"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="875.84" y1="120.2" x2="1103.18" y2="120.2"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="874.97" y1="150.46" x2="1102.31" y2="150.46"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                    </g>
+
+                    <g>
+                        <path d="M1089.18,251.79l42-30.48" transform="translate(-28.33 -40.37)"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="1060.26" y1="180.72" x2="1102.03" y2="150.58"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="1060.26" y1="150.7" x2="1102.27" y2="119.97"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="1060.26" y1="120.21" x2="1102.27" y2="90.07"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="1060.38" y1="89.36" x2="1102.5" y2="58.15"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <path d="M1110.75,235.88q0-61.11,0-122.21" transform="translate(-28.33 -40.37)"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                    </g>
+                    <g>
+                        <rect x="833.99" y="88.76" width="226.46" height="122.47"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="865.81" y1="88.8" x2="865.81" y2="210.89"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="897.94" y1="88.45" x2="897.94" y2="210.53"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="930.15" y1="89" x2="930.15" y2="211.09"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="962.28" y1="88.65" x2="962.28" y2="210.74"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="994.66" y1="89.46" x2="994.66" y2="211.54"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="1026.79" y1="89.11" x2="1026.79" y2="211.19"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="833.52" y1="120.4" x2="1060.86" y2="120.4"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="833.88" y1="150.69" x2="1061.22" y2="150.69"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="833" y1="180.95" x2="1060.34" y2="180.95"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                    </g>
+                    <circle cx="865.4" cy="226.64" r="19.62"
+                        style="stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                    <circle cx="1026.55" cy="226.43" r="19.62"
+                        style="stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                </g>
+                <g class="trolley trolley-full">
+                    <circle cx="1336.14" cy="194.94" r="19.62"
+                        style="stroke: #fff;stroke-miterlimit: 26;stroke-width: 3px" />
+                    <circle cx="1497.33" cy="195.23" r="19.62"
+                        style="stroke: #fff;stroke-miterlimit: 26;stroke-width: 3px" />
+                    <line x1="1285.2" y1="194.28" x2="1511.39" y2="194.28"
+                        style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                    <g>
+                        <path d="M1290.92,129l42-30.49" transform="translate(-28.33 -40.37)"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="1263.08" y1="120.28" x2="1304.9" y2="90.41"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="1263.01" y1="150.59" x2="1304.74" y2="120.53"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="1262.94" y1="180.67" x2="1304.59" y2="150.49"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="1262.79" y1="211.15" x2="1304.74" y2="180.52"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <path d="M1313.08,113.25q.24,61.13.46,122.24" transform="translate(-28.33 -40.37)"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                    </g>
+                    <g>
+                        <image x="850" y="0" style=" height: 200px; width:200px" xlink:href="../src/anh.jpg" />
+                        <rect x="1304.95" y="58.27" width="226.46" height="122.47"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="1336.78" y1="58.31" x2="1336.78" y2="180.4"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="1368.91" y1="57.96" x2="1368.91" y2="180.04"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="1401.12" y1="58.51" x2="1401.12" y2="180.6"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="1433.25" y1="58.16" x2="1433.25" y2="180.25"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="1465.63" y1="58.97" x2="1465.63" y2="181.05"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="1497.76" y1="58.62" x2="1497.76" y2="180.7"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="1304.49" y1="89.91" x2="1531.83" y2="89.91"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="1304.84" y1="120.2" x2="1532.18" y2="120.2"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="1303.97" y1="150.46" x2="1531.31" y2="150.46"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                    </g>
+                    <g>
+                        <g>
+                            <path
+                                d="M1362.5,172.44c5.88,8.12-2.56,27.53-16.6,33.39-6.17,2.57-17.28,4.14-23-2.5-6-6.88-2.67-18.51,2.14-24.89C1334.36,166,1356.48,164.15,1362.5,172.44Z"
+                                transform="translate(-28.33 -40.37)" />
+                            <path
+                                d="M1390,209.06c5.93,8.18-2.51,27.76-16.6,33.39-5.94,2.38-16.6,3.74-22.36-2.73-6-6.8-3.16-18.28,1.46-24.66C1361.59,202.49,1383.93,200.69,1390,209.06Z"
+                                transform="translate(-28.33 -40.37)" />
+                            <path
+                                d="M1362.5,172.44c5.88,8.12-2.56,27.53-16.6,33.39-6.17,2.57-17.28,4.14-23-2.5-6-6.88-2.67-18.51,2.14-24.89C1334.36,166,1356.48,164.15,1362.5,172.44Z"
+                                transform="translate(-28.33 -40.37)"
+                                style="fill: none;stroke: #fff;stroke-miterlimit: 26;stroke-width: 3px" />
+                            <path
+                                d="M1365.32,171.53c5.89,8.12-2.55,27.53-16.59,33.39-6.17,2.57-17.28,4.14-23-2.5-6-6.88-2.67-18.51,2.14-24.89C1337.19,165.1,1359.31,163.23,1365.32,171.53Z"
+                                transform="translate(-28.33 -40.37)"
+                                style="fill: none;stroke: #fff;stroke-miterlimit: 26;stroke-width: 3px" />
+                            <path
+                                d="M1391.5,205.06c5.89,8.13-2.55,27.54-16.59,33.4-6.17,2.57-17.28,4.14-23-2.5-6-6.88-2.68-18.51,2.13-24.89C1363.37,198.64,1385.49,196.77,1391.5,205.06Z"
+                                transform="translate(-28.33 -40.37)"
+                                style="fill: none;stroke: #fff;stroke-miterlimit: 26;stroke-width: 3px" />
+                            <path
+                                d="M1394.44,206.32c5.89,8.13-2.55,27.54-16.59,33.4-6.17,2.57-17.28,4.14-23-2.5-6-6.88-2.67-18.51,2.13-24.89C1366.31,199.9,1388.43,198,1394.44,206.32Z"
+                                transform="translate(-28.33 -40.37)"
+                                style="fill: none;stroke: #fff;stroke-miterlimit: 26;stroke-width: 3px" />
+                            <ellipse cx="1481.06" cy="110.97" rx="46.92" ry="49.3"
+                                transform="translate(420.4 1138.38) rotate(-50.25)"
+                                style="stroke: #fff;stroke-miterlimit: 26;stroke-width: 0.929855591526674px" />
+                        </g>
+                    </g>
+                    <g>
+                        <path d="M1518.18,251.79l42-30.48" transform="translate(-28.33 -40.37)"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="1489.26" y1="180.72" x2="1531.03" y2="150.58"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="1489.26" y1="150.7" x2="1531.27" y2="119.97"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="1489.26" y1="120.21" x2="1531.27" y2="90.07"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="1489.38" y1="89.36" x2="1531.5" y2="58.15"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <path d="M1539.75,235.88q0-61.11,0-122.21" transform="translate(-28.33 -40.37)"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                    </g>
+                    <g>
+                        <rect x="1262.99" y="88.76" width="226.46" height="122.47"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="1294.81" y1="88.8" x2="1294.81" y2="210.89"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="1326.94" y1="88.45" x2="1326.94" y2="210.53"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="1359.15" y1="89" x2="1359.15" y2="211.09"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="1391.28" y1="88.65" x2="1391.28" y2="210.74"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="1423.66" y1="89.46" x2="1423.66" y2="211.54"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="1455.79" y1="89.11" x2="1455.79" y2="211.19"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="1262.52" y1="120.4" x2="1489.86" y2="120.4"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="1262.88" y1="150.69" x2="1490.22" y2="150.69"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                        <line x1="1262" y1="180.95" x2="1489.34" y2="180.95"
+                            style="fill: none;stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                    </g>
+                    <circle cx="1294.4" cy="226.64" r="19.62"
+                        style="stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                    <circle cx="1455.55" cy="226.43" r="19.62"
+                        style="stroke: #ff1ead;stroke-miterlimit: 26;stroke-width: 3px" />
+                </g>
+            </svg>
+        </div>
+
+    </div>
+
+    <!-- partial -->
+    <script src="./js/test.js " charset="utf-8"></script>
+
+    <script src='./js/fscreen.js'>
+    </script>
+    <script src='./js/Stage.js'>
+    </script>
+    <script src='./js/MyMath.js'>
+    </script>
+    <script src="./js/script.js">
+    </script>
+</body>
+
+</html>
