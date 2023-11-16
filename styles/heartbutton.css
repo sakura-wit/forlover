@@ -1,0 +1,72 @@
+.heart-button {
+    width: 100px;
+    height: 90px;
+    background-color: red;
+    position: relative;
+    transform: rotate(-45deg);
+    margin: 50px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    opacity: 0;
+}
+
+.heart-button::before,
+.heart-button::after {
+    content: '';
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.heart-button::before {
+    top: -50px;
+    left: 0;
+}
+
+.heart-button::after {
+    top: 0;
+    left: 50px;
+}
+
+.heart-button:hover {
+    background-color: red;
+    opacity: 1;
+}
+
+
+/*  */
+
+.birthday-cake-button {
+    position: relative;
+    width: 100px;
+    height: 150px;
+    background-color: #f9e0a7;
+    /* Màu của bánh sinh nhật */
+    border-radius: 8px;
+    /* Đường cong góc của nút */
+    border: 2px solid #deaa88;
+    /* Viền nút */
+    overflow: hidden;
+    /* Ẩn nội dung vượt quá kích thước của nút */
+
+    /* Đồng hồ cát */
+    margin-top: 20px;
+    border-top: 10px solid #ffcc99;
+    position: relative;
+}
+
+.birthday-cake-button::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 20px;
+    background-color: #ffcc99;
+    /* Màu của đèn bánh sinh nhật */
+    border-radius: 50%;
+}

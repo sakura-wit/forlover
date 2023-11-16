@@ -9,14 +9,17 @@
     <link rel="stylesheet" href="styles/flexbox-center-container.css" media="all">
     <link rel="stylesheet" href="styles/system-fonts.css" media="all">
     <link rel="stylesheet" href="styles/style.css" media="all">
+    <link rel="stylesheet" href="styles/heartbutton.css" media="all">
+    <link rel="stylesheet" href="styles/img.css" media="all">
+
 </head>
 
 <body>
     <canvas id=c></canvas>
     <canvas id="confetti"></canvas>
-    <div class="container" id="count">
+    <div style="margin-left: 450px; margin-right: 500px;" class="container" id="count">
         <h1 id="head">Countdown to your birthday:</h1>
-        <ul>
+        <ul style="display: flex;">
             <li><span id="day"></span>days</li>
             <li><span id="hour"></span>hours</li>
             <li><span id="minute"></span>minutes</li>
@@ -45,10 +48,132 @@
      " src="https://scontent.fsgn5-15.fna.fbcdn.net/v/t39.30808-6/402017416_2024479657886955_5311526364462741451_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=5f2048&_nc_ohc=pJ6RJ7cQAJcAX95mdGy&_nc_ht=scontent.fsgn5-15.fna&oh=00_AfBEcovBNA4nIlSiGTZNUh3HtAILKjKmJxC-D5wcHuzlGQ&oe=65590B2C" />
  -->
 
-        <button style="margin-top: 200px; margin-left: 550px;" onclick="chuyenTrang()">Click</button>
+        <!-- <button class="heart-button" style=" width: 100px; height: 100px; 
+        margin-top: 400px;
+        border: none;
+        margin-left: 570px;" onclick="chuyenTrang()"></button> -->
+
+
+
+
+    </div>
+
+
+    <button class="heart-button" style=" padding: 50px; z-index: 1000; width: 50px; height: 50px; 
+    margin-top: -200px;
+    border: none;
+    margin-left: 600px;
+    " onclick="chuyenTrang()"></button>
+
+    <img class="img-gift" src="./src/anh.jpg" style="
+    margin-top: -200px;
+    margin-left: 10px;
+    
+    width: 300px;
+    height: 300px;
+    " />
+
+    <img class="img-gift1" src="./src/anh1.jpg" style="
+    margin-top: -500px;
+    margin-left: -1000px;
+    
+    width: 300px;
+    height: 300px;
+    " />
+
+
+    <img class="img-gift2" src="./src/anh2.jpg" style="
+    margin-top: -200px;
+    margin-left: 200px;
+    
+    width: 300px;
+    height: 300px;
+    " />
+
+    <img class="img-gift3" src="./src/anh2.jpg" style="
+    margin-top: -300px;
+    margin-left: -500px;
+    
+    width: 250px;
+    height: 250px;
+    " />
+
+
+    <img class="img-gift4" src="./src/anh2.jpg" style="
+    margin-top: -200px;
+    margin-left: 370px;
+    
+    width: 250px;
+    height: 250px;
+    " />
+
+    <img class="img-gift5" src="./src/anh1.jpg" style="
+    margin-top: 100px;
+    margin-left: -100px;
+    
+    width: 250px;
+    height: 250px;
+    " />
+
+    <img class="img-gift6" src="./src/anh1.jpg" style="
+    margin-top: 100px;
+    margin-left: 100px;
+    
+    width: 250px;
+    height: 250px;
+    " />
+
+    <img class="img-gift7" src="./src/anh1.jpg" style="
+    margin-top: 100px;
+    margin-left: -1900px;
+    
+    width: 250px;
+    height: 250px;
+    " />
+
+    <img class="img-gift8" src="./src/anh1.jpg" style="
+    margin-top: 140px;
+    margin-left:100px;
+    
+    width: 280px;
+    height: 280px;
+    " />
+
+    <img class="img-gift9" src="./src/anh1.jpg" style="
+    margin-top: 100px;
+    margin-left:100px;
+    
+    width: 300px;
+    height: 300px;
+    " />
+
+    <img class="img-gift10" src="./src/anh1.jpg" style="
+    margin-top: 100px;
+    margin-left:100px;
+    
+    width: 250px;
+    height: 250px;
+    " />
+
+    <!-- <img class="img-gift1" src="./src/anh1.jpg" style="
+    margin-top: 100px;
+    margin-left:100px;
+    opacity: 1;
+    " /> -->
+
+    <!-- <img class="img-gift1" src="./src/anh1.jpg" style="
+    margin-top: 100px;
+    margin-left:100px;
+    opacity: 1;
+    width: 250px;
+    height: 250px;
+    " /> -->
 
 </body>
-<script src="scripts/confetti.min.js" charset="utf-8"></script>
+
+
+
+<script src=" scripts/confetti.min.js" charset="utf-8"></script>
 <script src="scripts/index.js" charset="utf-8"></script>
 
 <script>

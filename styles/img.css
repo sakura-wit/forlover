@@ -1,0 +1,155 @@
+.img-gift {
+    width: 200px;
+    height: 200px;
+    opacity: 0;
+    transform: rotate(40deg);
+    transition: opacity 1s ease, transform 1s ease;
+    /* transition: transform 1s ease; */
+}
+
+.img-gift:hover {
+    opacity: 0.8;
+    transform: rotate(0deg);
+}
+
+.img-gift1 {
+    width: 200px;
+    height: 200px;
+    opacity: 0;
+    transform: rotate(-40deg);
+    transition: opacity 1s ease, transform 1s ease;
+    /* transition: transform 1s ease; */
+}
+
+.img-gift2 {
+    width: 200px;
+    height: 200px;
+    opacity: 0;
+    transform: rotate(-70deg);
+    transition: opacity 1s ease, transform 1s ease;
+    /* transition: transform 1s ease; */
+}
+
+
+.img-gift3 {
+    width: 200px;
+    height: 200px;
+    opacity: 0;
+    transform: rotate(40deg);
+    transition: opacity 1s ease, transform 1s ease;
+    /* transition: transform 1s ease; */
+}
+
+
+.img-gift4 {
+    width: 200px;
+    height: 200px;
+    opacity: 0;
+    transform: rotate(40deg);
+    transition: opacity 1s ease, transform 1s ease;
+    /* transition: transform 1s ease; */
+}
+
+.img-gift5 {
+    width: 200px;
+    height: 200px;
+    opacity: 0;
+    transform: rotate(-25deg);
+    transition: opacity 1s ease, transform 1s ease;
+    /* transition: transform 1s ease; */
+}
+
+.img-gift6 {
+    width: 200px;
+    height: 200px;
+    opacity: 0;
+    transform: rotate(100deg);
+    transition: opacity 1s ease, transform 1s ease;
+    /* transition: transform 1s ease; */
+}
+
+.img-gift7 {
+    width: 200px;
+    height: 200px;
+    opacity: 0;
+    transform: rotate(40deg);
+    transition: opacity 1s ease, transform 1s ease;
+    /* transition: transform 1s ease; */
+}
+
+.img-gift8 {
+    width: 200px;
+    height: 200px;
+    opacity: 0;
+    transform: rotate(-40deg);
+    transition: opacity 1s ease, transform 1s ease;
+    /* transition: transform 1s ease; */
+}
+
+.img-gift9 {
+    width: 200px;
+    height: 200px;
+    opacity: 0;
+    transform: rotate(40deg);
+    transition: opacity 1s ease, transform 1s ease;
+    /* transition: transform 1s ease; */
+}
+
+.img-gift10 {
+    width: 200px;
+    height: 200px;
+    opacity: 0;
+    transform: rotate(40deg);
+    transition: opacity 1s ease, transform 1s ease;
+    /* transition: transform 1s ease; */
+}
+
+.img-gift1:hover {
+    opacity: 0.8;
+    transform: rotate(0deg);
+}
+
+.img-gift2:hover {
+    opacity: 0.8;
+    transform: rotate(0deg);
+}
+
+.img-gift3:hover {
+    opacity: 0.8;
+    transform: rotate(0deg);
+}
+
+.img-gift4:hover {
+    opacity: 0.8;
+    transform: rotate(0deg);
+}
+
+.img-gift5:hover {
+    opacity: 0.8;
+    transform: rotate(0deg);
+}
+
+.img-gift6:hover {
+    opacity: 0.8;
+    transform: rotate(0deg);
+}
+
+.img-gift7:hover {
+    opacity: 0.8;
+    transform: rotate(0deg);
+}
+
+.img-gift8:hover {
+    opacity: 0.8;
+    transform: rotate(0deg);
+}
+
+.img-gift9:hover {
+    opacity: 0.8;
+    transform: rotate(0deg);
+}
+
+.img-gift10:hover {
+    opacity: 0.8;
+    transform: rotate(0deg);
+}
