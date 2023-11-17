@@ -2,6 +2,7 @@ const count = document.getElementById('count');
 const head = document.getElementById('head');
 const giftbox = document.getElementById('merrywrap');
 const canvasC = document.getElementById('c');
+const audioElement = document.getElementById('audio');
 
 const config = {
     birthdate: 'Nov 17, 2023',
@@ -15,6 +16,7 @@ function hideEverything() {
     giftbox.style.display = 'none';
     canvasC.style.display = 'none';
 }
+
 
 hideEverything();
 
@@ -407,6 +409,7 @@ x = setInterval(function () {
     }
 
     function anim() {
+        // audioElement.play();
         window.requestAnimationFrame(anim);
 
         ctx.fillStyle = '#fff';
@@ -465,8 +468,10 @@ x = setInterval(function () {
         let stepMinutes = [2000, 2000, 1000, 1000];
 
         function init() {
+
             box.addEventListener('click', openBox, false);
             box.addEventListener('click', showfireworks, false);
+
         }
 
         function stepClass(step) {
@@ -487,6 +492,7 @@ x = setInterval(function () {
             setTimeout(openBox, stepMinutes[step - 1]);
             step++;
             //   setTimeout(anim, 1900);
+            audioElement.play();
         }
 
         function showfireworks() {

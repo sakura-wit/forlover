@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
+    <!-- <meta name="viewport" content="width=device-width" /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Birthday!</title>
 
     <link rel="stylesheet" href="styles/flexbox-center-container.css" media="all">
@@ -62,13 +63,13 @@
     <button class="heart-button" style=" padding: 50px; z-index: 1000; width: 50px; height: 50px; 
     margin-top: -200px;
     border: none;
-    margin-left: 600px;
-    " onclick="chuyenTrang()"></button>
+    margin-left: 630px;
+    " onclick="goToPage2()"> </button>
 
     <img class="img-gift" src="./src/anh.jpg" style="
     margin-top: -200px;
     margin-left: 10px;
-    
+    border-radius: 0.5rem;
     width: 300px;
     height: 300px;
     " />
@@ -76,7 +77,7 @@
     <img class="img-gift1" src="./src/anh1.jpg" style="
     margin-top: -500px;
     margin-left: -1000px;
-    
+    border-radius: 0.5rem;
     width: 300px;
     height: 300px;
     " />
@@ -85,64 +86,66 @@
     <img class="img-gift2" src="./src/anh2.jpg" style="
     margin-top: -200px;
     margin-left: 200px;
-    
+    border-radius: 0.5rem;
     width: 300px;
     height: 300px;
     " />
 
-    <img class="img-gift3" src="./src/anh2.jpg" style="
+    <img class="img-gift3" src="./src/anh3.jpg" style="
     margin-top: -300px;
     margin-left: -500px;
-    
+    border-radius: 0.5rem;
     width: 250px;
     height: 250px;
     " />
 
 
-    <img class="img-gift4" src="./src/anh2.jpg" style="
+    <img class="img-gift4" src="./src/anh4.jpg" style="
     margin-top: -200px;
     margin-left: 370px;
-    
+    object-fit: contain;
     width: 250px;
     height: 250px;
+    border-radius: 0.5rem;
     " />
 
-    <img class="img-gift5" src="./src/anh1.jpg" style="
+    <img class="img-gift5" src="./src/anh5.jpg" style="
     margin-top: 100px;
     margin-left: -100px;
-    
+    object-fit: contain;
     width: 250px;
     height: 250px;
+    border-radius: 0.5rem;
     " />
 
-    <img class="img-gift6" src="./src/anh1.jpg" style="
+    <img class="img-gift6" src="./src/anh6.jpg" style="
     margin-top: 100px;
     margin-left: 100px;
-    
+    border-radius: 0.5rem;
     width: 250px;
     height: 250px;
     " />
 
-    <img class="img-gift7" src="./src/anh1.jpg" style="
+    <img class="img-gift7" src="./src/anh7.jpg" style="
     margin-top: 100px;
     margin-left: -1900px;
-    
+    border-radius: 0.5rem;
     width: 250px;
     height: 250px;
     " />
 
-    <img class="img-gift8" src="./src/anh1.jpg" style="
+    <img class="img-gift8" src="./src/anh7.jpg" style="
     margin-top: 140px;
     margin-left:100px;
-    
+    border-radius: 0.5rem;
     width: 280px;
     height: 280px;
     " />
 
-    <img class="img-gift9" src="./src/anh1.jpg" style="
+    <img class="img-gift9" src="./src/anh8.jpg" style="
     margin-top: 100px;
     margin-left:100px;
-    
+    border-radius: 0.5rem;
     width: 300px;
     height: 300px;
     " />
@@ -153,7 +156,11 @@
     
     width: 250px;
     height: 250px;
+    border-radius: 0.5rem;
     " />
+
+    <p style="position: absolute; top: 450px; left: 600px; font-size: larger;"> ᴛìᴍ ʜìɴʜ ᴛʀáɪ ᴛʏᴍ </p>
+    <p style="position: absolute; top: 480px; left: 588px; font-size: larger">ʀồɪ ᴄʟɪᴄᴋ ᴠàᴏ ᴄᴏʏ ɴʜᴇ</p>
 
     <!-- <img class="img-gift1" src="./src/anh1.jpg" style="
     margin-top: 100px;
@@ -169,7 +176,41 @@
     height: 250px;
     " /> -->
 
+    <audio autoplay id="audio">
+        <source src="./audio/voicehappy.mp3">
+    </audio>
+
+    <script>
+        // document.addEventListener('DOMContentLoaded', function () {
+        //     const audio = document.getElementById('myAudio');
+        //     const isAudioPlaying = localStorage.getItem('audioPlaying') === 'true';
+
+        //     if (isAudioPlaying) {
+        //         audio.play();
+        //     }
+
+        //     // Lưu trạng thái phát vào Local Storage khi âm thanh thay đổi
+        //     audio.addEventListener('play', function () {
+        //         localStorage.setItem('audioPlaying', 'true');
+        //     });
+
+        //     audio.addEventListener('pause', function () {
+        //         localStorage.setItem('audioPlaying', 'false');
+        //     });
+        // });
+
+        function goToPage2() {
+            // Lưu trạng thái phát trước khi chuyển trang
+            const audio = document.getElementById('audio');
+            // localStorage.setItem('audioPlaying', audio.paused ? 'false' : 'true');
+
+            // Chuyển trang
+            window.location.href = 'index2.html';
+        }
+    </script>
+
 </body>
+
 
 
 

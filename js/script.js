@@ -124,8 +124,8 @@ const store = {
       size: IS_DESKTOP
         ? "3" // Desktop default
         : IS_HEADER
-        ? "1.2" // Profile header default (doesn't need to be an int)
-        : "2", // Mobile default
+          ? "1.2" // Profile header default (doesn't need to be an int)
+          : "2", // Mobile default
       autoLaunch: true,
       finale: false, // 同时放更多烟花
       skyLighting: SKY_LIGHT_NORMAL + "",
@@ -668,8 +668,8 @@ const floralShell = (size = 1) => ({
     Math.random() < 0.65
       ? "random"
       : Math.random() < 0.15
-      ? randomColor()
-      : [randomColor(), randomColor({ notSame: true })],
+        ? randomColor()
+        : [randomColor(), randomColor({ notSame: true })],
   floral: true,
 });
 
@@ -1296,7 +1296,7 @@ function update(frameTime, lag) {
               Math.random() * PI_2,
               Math.random() * star.sparkSpeed * burnRate,
               star.sparkLife * 0.8 +
-                Math.random() * star.sparkLifeVariation * star.sparkLife
+              Math.random() * star.sparkLifeVariation * star.sparkLife
             );
           }
         }
@@ -1361,9 +1361,8 @@ function render(speed) {
   mainCtx.scale(dpr * scaleFactor, dpr * scaleFactor);
 
   trailsCtx.globalCompositeOperation = "source-over";
-  trailsCtx.fillStyle = `rgba(0, 0, 0, ${
-    store.state.config.longExposure ? 0.0025 : 0.175 * speed
-  })`;
+  trailsCtx.fillStyle = `rgba(0, 0, 0, ${store.state.config.longExposure ? 0.0025 : 0.175 * speed
+    })`;
   trailsCtx.fillRect(0, 0, width, height);
 
   mainCtx.clearRect(0, 0, width, height);
@@ -1506,9 +1505,8 @@ function colorSky(speed) {
   currentSkyColor.b +=
     ((targetSkyColor.b - currentSkyColor.b) / colorChange) * speed;
 
-  appNodes.canvasContainer.style.backgroundColor = `rgb(${
-    currentSkyColor.r | 0
-  }, ${currentSkyColor.g | 0}, ${currentSkyColor.b | 0})`;
+  appNodes.canvasContainer.style.backgroundColor = `rgb(${currentSkyColor.r | 0
+    }, ${currentSkyColor.g | 0}, ${currentSkyColor.b | 0})`;
 }
 
 mainStage.addEventListener("ticker", update);
@@ -1899,7 +1897,7 @@ class Shell {
             newSpeed, //speed,
             // add minor variation to star life
             this.starLife +
-              Math.random() * this.starLife * this.starLifeVariation
+            Math.random() * this.starLife * this.starLifeVariation
           );
 
           if (this.glitter) {
@@ -1935,7 +1933,7 @@ class Shell {
     } else {
       throw new Error(
         "Invalid shell color. Expected string or array of strings, but got: " +
-          this.color
+        this.color
       );
     }
 
@@ -2136,23 +2134,24 @@ const soundManager = {
       fileNames: ["burst1.mp3", "burst2.mp3"],
     },
     burstSmall: {
-      volume: 0.25,
+      volume: 2,
       playbackRateMin: 0.8,
       playbackRateMax: 1,
       fileNames: ["burst-sm-1.mp3", "burst-sm-2.mp3"],
     },
     crackle: {
-      volume: 0.2,
+      volume: 2,
       playbackRateMin: 1,
       playbackRateMax: 1,
       fileNames: ["crackle1.mp3"],
     },
     crackleSmall: {
-      volume: 0.3,
+      volume: 2,
       playbackRateMin: 1,
       playbackRateMax: 1,
       fileNames: ["crackle-sm-1.mp3"],
     },
+
   },
 
   preload() {

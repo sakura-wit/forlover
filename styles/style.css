@@ -4,6 +4,7 @@
     padding: 0;
 }
 
+
 canvas {
     position: absolute;
     top: 0;
@@ -74,7 +75,7 @@ li span {
     position: absolute;
     color: #fff;
     width: 100%;
-    content: "Click Me!";
+    content: "𝐂𝐥𝐢𝐜𝐤 𝐦ở 𝐪𝐮à 𝐧è 𝐛!";
     left: 0;
     bottom: 0;
     font-size: 24px;
@@ -298,4 +299,9 @@ li span {
     100% {
         transform: translateY(0px);
     }
+}
+
+#rotatingImage {
+    transition: transform 2s ease;
+    /* Áp dụng hiệu ứng chuyển động */
 }
