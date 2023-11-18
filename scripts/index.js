@@ -5,7 +5,7 @@ const canvasC = document.getElementById('c');
 const audioElement = document.getElementById('audio');
 
 const config = {
-    birthdate: 'Nov 20, 2023',
+    birthdate: 'Nov 19, 2023',
     name: 'Bảo Trân'
 
 };
